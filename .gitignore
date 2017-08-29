@@ -29,8 +29,9 @@ local.properties
 
 # node.js
 node_modules/
-npm-debug.log
 yarn-error.log
+.expo/
+npm-debug.*
 
 # BUCK
 buck-out/
