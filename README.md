@@ -6,16 +6,19 @@ A react-native project for an enriched synchronized community agenda that allows
 require: node.js,Xcode, android studio, tips => use WebStrom by jetBrains
 
 In terminal:
-- npm update
-- npm install -g react-native-cli
-- npm install -g create-react-native-app
+- `npm update`
+- `npm install -g react-native-cli`
+- `npm install -g create-react-native-app`
 
 In project repo:
-- npm install
-- react-native-cli start ( yarn if you prefer this tool)
-- react-native-cli run-android / react-native-cli run-ios
+- `npm install` install dependencies from package.json
+- `react-native-cli start` yarn if you prefer this tool
+- `react-native-cli run-android` / `react-native-cli run-ios`
 
-For android, before run-android, open your repository with Android Studio, it will add all configurations files missing automaticaly.
+if you have this question `Android project not found. Maybe run react-native android first?`
+- `react-native upgrade`  and say `n` for all answers
+
+For android, before run-android, open the android folder with Android Studio, it will add all configurations files missing automaticaly.
 You will certainly encounter problems but you will fix them with ease for sure.
 
 ## Doc auto CRNA
