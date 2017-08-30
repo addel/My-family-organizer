@@ -1,6 +1,25 @@
 # My-family-organizer
 A react-native project for an enriched synchronized community agenda that allows you to simply manage the daily life of the households and interact with family and friends. Simple and user-friendly, My family organizer frees up time and facilitates organization and communication. This application is positioned as the private social network of homes and communities.
 
+### Install
+
+require: node.js,Xcode, android studio, tips => use WebStrom by jetBrains
+
+In terminal:
+- npm update
+- npm install -g react-native-cli
+- npm install -g create-react-native-app
+
+In project repo:
+- npm install
+- react-native-cli start ( yarn if you prefer this tool)
+- react-native-cli run-android / react-native-cli run-ios
+
+For android, before run-android, open your repository with Android Studio, it will add all configurations files missing automaticaly.
+You will certainly encounter problems but you will fix them with ease for sure.
+
+## Doc auto CRNA
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
