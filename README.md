@@ -3,7 +3,10 @@ A react-native project for an enriched synchronized community agenda that allows
 
 ### Install
 
-require: node.js,Xcode, android studio, tips => use WebStrom by jetBrains
+<i class="icon-hdd"></i> require: node.js,Xcode, android studio
+> **Tip:**  => use WebStrom by jetBrains :-)
+
+
 
 In terminal:
 - `npm update`
@@ -20,6 +23,10 @@ if you have this question `Android project not found. Maybe run react-native and
 
 For android, before run-android, open the android folder with Android Studio, it will add all configurations files missing automaticaly.
 You will certainly encounter problems but you will fix them with ease for sure.
+
+#### WARNING DO NOT COMMIT ios or android FOLDER for firebase each of you will get the firebase conf a put it on they own local folder
+
+<i class="icon-refresh"></i> Enjoy !
 
 ## Doc auto CRNA
 
