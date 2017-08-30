@@ -18,13 +18,13 @@ In project repo:
 - `react-native-cli start` yarn if you prefer this tool
 - `react-native-cli run-android` / `react-native-cli run-ios`
 
-if you have this question `Android project not found. Maybe run react-native android first?`
-- `react-native upgrade`  and say `n` for all answers
-
 For android, before run-android, open the android folder with Android Studio, it will add all configurations files missing automaticaly.
 You will certainly encounter problems but you will fix them with ease for sure.
 
-#### WARNING DO NOT COMMIT ios or android FOLDER for firebase each of you will get the firebase conf a put it on they own local folder
+### ERRATUM
+>if you have this question `Android project not found. Maybe run react-native android first?`
+- `react-native upgrade`  and say `n` for all answers
+
 
 <i class="icon-refresh"></i> Enjoy !
 
