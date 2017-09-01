@@ -24,11 +24,5 @@ export default StyleSheet.create({
         width: '100%',
         borderColor: '#D4D4D4',
         borderBottomWidth: 1,
-    },
-    errorTextStyle: {
-        color: '#E64A19',
-        alignSelf: 'center',
-        paddingTop: 10,
-        paddingBottom: 10
     }
 });
