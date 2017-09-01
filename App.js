@@ -3,7 +3,9 @@ import firebase from 'firebase';
 import Login from './src/views/Login';
 
 export default class App extends React.Component {
+
   componentWillMount() {
+      /* Firebase conf values Mother fucker */
       firebase.initializeApp({
           apiKey: 'AIzaSyB-_hIt-OmYnVRl08lT4J08uB8QRf2tSQo',
           authDomain: 'my-family-organizer-4242.firebaseapp.com',
@@ -13,6 +15,7 @@ export default class App extends React.Component {
           messagingSenderId: '381775289631'
       });
   }
+
   render() {
         return (
             <Login/>
