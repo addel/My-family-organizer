@@ -5,7 +5,7 @@ export default StyleSheet.create({
         paddingRight: 5,
         paddingLeft: 5,
         paddingBottom: 2,
-        color: '#262626',
+        color: '#ae0011',
         fontSize: 18,
         fontWeight: '200',
         flex: 1,
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     },
     labelStyle: {
         fontSize: 12,
-        color: '#7F7D7D',
+        color: '#ae0011',
         fontWeight: '200',
         flex: 1
     },
@@ -21,8 +21,9 @@ export default StyleSheet.create({
         height: 45,
         flexDirection: 'column',
         alignItems: 'flex-start',
-        width: '100%',
+        width: '80%',
         borderColor: '#D4D4D4',
         borderBottomWidth: 1,
+
     }
 });

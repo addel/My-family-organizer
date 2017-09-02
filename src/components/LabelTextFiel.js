@@ -1,19 +1,23 @@
 import React from 'react'
-import {View, Text, TextInput} from 'react-native'
-import styles from '../styles/Styles'
+import {View, Image, TextInput} from 'react-native'
+import styles from '../styles/LabelTextField'
 
 
-const LabelTextField = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
+const LabelTextField = ({ iconName, onChangeText, placeholder, secureTextEntry, hasError }) => {
 
     return (
-        <View style={styles.containerStyle}>
-            <Text style={styles.labelStyle}>{label.toUpperCase()}</Text>
-            <TextInput style={styles.inputStyle}
+        <View style={styles.inputWrap}>
+            <View style={styles.iconWrap}>
+                <Image source={iconName} style={styles.icon} resizeMode="contain" />
+            </View>
+            <TextInput
+                placeholderTextColor="#FFF"
                 autoCorrect={false}
                 placeholder={placeholder}
                 secureTextEntry={secureTextEntry}
-                value={value}
-                onChangeText={onChangeText} />
+                onChangeText={onChangeText}
+                style={[styles.input, hasError && styles.errorTextStyle]}
+            />
         </View>
     );
 };
