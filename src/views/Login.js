@@ -2,6 +2,7 @@ import React from 'react'
 import {Text, View, Image, TouchableOpacity, Alert} from 'react-native'
 import {LabelTextField} from '../components/LabelTextFiel'
 import styles from '../styles/Login'
+import * as firebase from "firebase";
 
 const login_main_image = require("../images/login-1.png");
 const lockIcon = require("../images/login1_lock.png");
@@ -10,20 +11,52 @@ const personIcon = require("../images/login1_person.png");
 export default class Login extends React.Component{
 
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = { email: '', password: '', error: false, loading: false };
 
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit() {
-        this.setState({loading: true});
-    }
 
-    validateEmail = (email) => {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
+    async handleSubmit() {
+
+        this.setState({
+            loading: true
+        });
+
+        if (this.state.email == '' && this.state.password == '') {
+            Alert.alert(
+                'Attention',
+                'Veuillez renseigner tout les champs !',
+                [{text: 'OK'},],
+                { cancelable: true }
+            );
+
+            this.setState({
+                error: true
+            });
+
+        } else {
+            try {
+                await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
+
+            } catch (error) {
+
+                Alert.alert(
+                    'Attention',
+                    error.toString(),
+                    [{text: 'OK'},],
+                    { cancelable: true }
+                );
+
+                this.setState({
+                    error: true
+                });
+            }
+        }
     };
+
 
     render(){
         return(
@@ -34,9 +67,10 @@ export default class Login extends React.Component{
                 <View style={styles.wrapper}>
                     <LabelTextField
                         iconName={personIcon}
-                        placeholder={"Username"}
+                        placeholder={"Email"}
                         value={this.state.email}
                         hasError={this.state.error}
+                        onChangeText={(email) => this.setState({email})}
                     />
 
                     <LabelTextField
@@ -55,25 +89,8 @@ export default class Login extends React.Component{
 
                     <TouchableOpacity activeOpacity={.5}>
                         <View style={styles.button}>
-                            <Text style={styles.buttonText} onPress={
-                                () => {
-                                    if (!this.validateEmail(this.state.email)) {
-                                        Alert.alert(
-                                            'Attention',
-                                            'L\'email renseigné est incorrect',
-                                            [{text: 'OK'},],
-                                            { cancelable: true }
-                                        )
-
-                                        // Je voudrai aussi que les bords du textInput rouge
-                                        this.state.error = true;
-                                    } else {
-                                        // valid email
-                                    }
-                            }}
-
-                            >Sign In</Text>
-                        </View>
+                            <Text style={styles.buttonText} onPress={() => this.handleSubmit() }>Sign In</Text>
+                </View>
                     </TouchableOpacity>
                 </View>
 

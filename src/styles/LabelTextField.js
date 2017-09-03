@@ -2,27 +2,28 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     inputWrap: {
-        flexDirection: "row",
-        marginVertical: 10,
-        height: 40,
-        borderBottomWidth: 1,
-        borderBottomColor: "#CCC"
+        borderWidth: 1,
+        borderBottomColor: '#CCC',
+        borderColor: 'transparent',
+        flexDirection: 'row',
+        height: 75,
     },
     iconWrap: {
-        paddingHorizontal: 7,
-        alignItems: "center",
-        justifyContent: "center",
+        paddingHorizontal: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     icon: {
-        height: 20,
-        width: 20,
+        width: 30,
+        height: 30,
     },
     input: {
         flex: 1,
-        paddingHorizontal: 10,
+        fontSize: 20,
     },
     errorTextStyle: {
         borderWidth: 1,
-        borderColor: "red"
+        borderColor: "red",
+        borderBottomColor: "red"
     }
 });
