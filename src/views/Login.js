@@ -16,8 +16,31 @@ export default class Login extends React.Component{
         this.state = { email: '', password: '', error: false, loading: false };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.resetPassword = this.resetPassword.bind(this);
     }
 
+    async resetPassword(){
+        if(this.state.email == ''){
+            Alert.alert(
+                'Reset password',
+                'Tape your email in email field and click on "Forgot Password?" button. ',
+                [{text: 'OK'},],
+                { cancelable: true }
+            );
+        }else{
+            try {
+                await firebase.auth().sendPasswordResetEmail(this.state.email);
+
+            } catch (error) {
+                Alert.alert(
+                    'Warning',
+                    error.toString(),
+                    [{text: 'OK'},],
+                    { cancelable: true }
+                );
+            }
+        }
+    }
 
     async handleSubmit() {
 
@@ -27,8 +50,8 @@ export default class Login extends React.Component{
 
         if (this.state.email == '' && this.state.password == '') {
             Alert.alert(
-                'Attention',
-                'Veuillez renseigner tout les champs !',
+                'Warning',
+                'All field are required !',
                 [{text: 'OK'},],
                 { cancelable: true }
             );
@@ -44,7 +67,7 @@ export default class Login extends React.Component{
             } catch (error) {
 
                 Alert.alert(
-                    'Attention',
+                    'Warning',
                     error.toString(),
                     [{text: 'OK'},],
                     { cancelable: true }
@@ -59,7 +82,9 @@ export default class Login extends React.Component{
 
 
     render(){
+        const { navigate } = this.props.navigation;
         return(
+
             <View style={styles.container}>
                 <View style={styles.login_main_image_view}>
                     <Image source={login_main_image} style={styles.login_main_image} resizeMode="contain" />
@@ -83,7 +108,7 @@ export default class Login extends React.Component{
 
                     <TouchableOpacity activeOpacity={.5}>
                         <View>
-                            <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+                            <Text style={styles.forgotPasswordText} onPress={() => this.resetPassword() }>Forgot Password?</Text>
                         </View>
                     </TouchableOpacity>
 
@@ -99,7 +124,7 @@ export default class Login extends React.Component{
                         <Text style={styles.accountText}>Don't have an account?</Text>
                         <TouchableOpacity activeOpacity={.5}>
                             <View>
-                                <Text style={styles.signupLinkText}>Sign Up</Text>
+                                <Text style={styles.signupLinkText} onPress={() => navigate('Register')} >Sign Up</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

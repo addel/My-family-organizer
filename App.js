@@ -1,7 +1,6 @@
 import React from 'react';
-import Firebase from './src/models/Firebase'
-import Login from './src/views/Login';
-import Register from "./src/views/Register";
+import Firebase from './src/utlis/Firebase'
+import {RootStackNavigatorn, SideMenuNavigator} from "./src/utlis/Router";
 
 export default class App extends React.Component {
 
@@ -10,8 +9,9 @@ export default class App extends React.Component {
   }
 
   render() {
+      const { navigation } = this.props;
         return (
-            <Register/>
+            <SideMenuNavigator/>
         )
   }
 }
