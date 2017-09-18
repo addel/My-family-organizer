@@ -9,6 +9,12 @@ export default StyleSheet.create({
         flex: 1,
         paddingVertical: 30,
     },
+    titleViewText: {
+        fontSize: 40,
+        color: '#fff',
+        justifyContent: 'center',
+
+    },
     login_main_image: {
         width: null,
         height: null,

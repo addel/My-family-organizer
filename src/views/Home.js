@@ -8,11 +8,11 @@ export default class Home extends Component {
 
     componentWillMount() {
 
-        /*firebase.auth().onAuthStateChanged((user) => {
+        firebase.auth().onAuthStateChanged((user) => {
             if(!user){
                 const {navigate} = this.props.navigation.navigate('Login')
             }
-        });*/
+        });
     }
 
     render() {

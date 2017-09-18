@@ -1,5 +1,5 @@
 import React from 'react';
-import {StackNavigator, DrawerNavigator} from 'react-navigation';
+import {StackNavigator, TabNavigator} from 'react-navigation';
 
 import Home from '../views/Home';
 import Login from '../views/Login'
@@ -17,22 +17,5 @@ export const RootStackNavigator = StackNavigator({
     }
 }, {
     headerMode: 'none'
-    }
-);
-
-export const SideMenuNavigator = DrawerNavigator({
-    RootStackNavigator: {
-            screen: RootStackNavigator,
-            navigationOptions: {
-                drawer: {
-                    icon: () => (
-                        <Image
-                            source={require('../images/home.png')}
-                            style={[styles.tabIcon, {tintColor: 'black'}]}
-                        />
-                    )
-                }
-            }
-        },
     }
 );

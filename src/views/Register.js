@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import {Text, View, Image, TouchableOpacity, Alert} from 'react-native'
+import {Text, View, TouchableOpacity, Alert} from 'react-native'
 import {LabelTextField} from '../components/LabelTextFiel'
 import styles from '../styles/Register'
 import * as firebase from "firebase";
 
 const personIcon = require("../images/login1_person.png");
 const lockIcon = require("../images/login1_lock.png");
-const emailIcon = require("../images/signup_email.png");
+const emailIcon = require("../images/email-icon.png");
 
 export default class Register extends Component {
 
