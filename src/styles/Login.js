@@ -3,17 +3,20 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#22aacc"
+        backgroundColor: "#fc9d00"
     },
     login_main_image_view: {
-        flex: 1,
-        paddingVertical: 30,
+        marginTop: 60,
+        marginLeft:40,
+        marginRight:40,
+        marginBottom: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     titleViewText: {
         fontSize: 40,
         color: '#fff',
-        justifyContent: 'center',
-
+        textAlign: 'center'
     },
     login_main_image: {
         width: null,
@@ -22,13 +25,14 @@ export default StyleSheet.create({
     },
     wrapper: {
         paddingVertical: 30,
+        marginLeft:40,
+        marginRight:40
     },
     button: {
-        backgroundColor: "#FF3366",
         paddingVertical: 20,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 30,
+        marginTop: 30
     },
     buttonText: {
         color: "#FFF",
@@ -39,18 +43,12 @@ export default StyleSheet.create({
         backgroundColor: "transparent",
         textAlign: "right",
         paddingRight: 15,
+        marginBottom: 20
     },
-    signupWrap: {
-        backgroundColor: "transparent",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
+    login: {
+        backgroundColor: "#006400",
     },
-    accountText: {
-        color: "#D8D8D8"
-    },
-    signupLinkText: {
-        color: "#FFF",
-        marginLeft: 5,
+    register: {
+        backgroundColor: "#4375e6",
     }
 });

@@ -3,54 +3,41 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#5e00cc"
-    },
-    bg: {
-        paddingTop: 30,
-        width: null,
-        height: null
-    },
-    headerContainer: {
-        flex: 1,
+        backgroundColor: "#7b4ccc"
     },
     inputsContainer: {
-        flex: 3,
-        marginTop: 50,
-    },
-    footerContainer: {
-        flex: 1
+        paddingVertical: 30,
+        marginLeft:40,
+        marginRight:40
     },
     headerIconView: {
         marginTop: 20,
         marginLeft: 10,
         backgroundColor: 'transparent'
     },
-    headerBackButtonView: {
-        width: 25,
-        height: 25,
-    },
-    backButtonIcon: {
-        width: 25,
-        height: 25
-    },
     headerTitleView: {
         backgroundColor: 'transparent',
-        marginTop: 25,
-        marginLeft: 25
+        marginTop: 60,
+        marginLeft:40,
+        marginRight:40,
+        marginBottom: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     titleViewText: {
         fontSize: 40,
         color: '#fff',
+        textAlign: 'center'
     },
     inputs: {
         paddingVertical: 20,
     },
     signup: {
         backgroundColor: '#00b7ff',
-        paddingVertical: 25,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 15,
+        paddingVertical: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 30
     },
     signin: {
         justifyContent: 'center',

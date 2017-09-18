@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, View, Image, TouchableOpacity, Alert} from 'react-native'
+import {Text, View, TouchableOpacity, Alert} from 'react-native'
 import {LabelTextField} from '../components/LabelTextFiel'
 import styles from '../styles/Login'
 import * as firebase from "firebase";
@@ -63,6 +63,8 @@ export default class Login extends React.Component{
             try {
                 await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
 
+                const {navigate} = this.props.navigation.navigate('Home')
+
             } catch (error) {
 
                 Alert.alert(
@@ -86,7 +88,7 @@ export default class Login extends React.Component{
 
             <View style={styles.container}>
                 <View style={styles.login_main_image_view}>
-                    <Text style={styles.titleViewText}>Homy You</Text>
+                    <Text style={styles.titleViewText}>Homy Plus</Text>
                 </View>
                 <View style={styles.wrapper}>
                     <LabelTextField
@@ -102,6 +104,7 @@ export default class Login extends React.Component{
                         placeholder={"Password"}
                         autoCorrect={false}
                         value={this.state.password}
+                        hasError={this.state.error}
                         secureTextEntry
                     />
 
@@ -112,21 +115,15 @@ export default class Login extends React.Component{
                     </TouchableOpacity>
 
                     <TouchableOpacity activeOpacity={.5}>
-                        <View style={styles.button}>
+                        <View style={[styles.button, styles.login]}>
                             <Text style={styles.buttonText} onPress={() => this.handleSubmit() }>Login</Text>
-                </View>
+                         </View>
                     </TouchableOpacity>
-                </View>
-
-                <View style={styles.container}>
-                    <View style={styles.signupWrap}>
-                        <Text style={styles.accountText}>Don't have an account?</Text>
-                        <TouchableOpacity activeOpacity={.5}>
-                            <View>
-                                <Text style={styles.signupLinkText} onPress={() => navigate('Register')} >Create Account</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
+                    <TouchableOpacity activeOpacity={.5}>
+                        <View style={[styles.button, styles.register]}>
+                            <Text style={styles.buttonText} onPress={() => navigate('Register')} >Create Account</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         )

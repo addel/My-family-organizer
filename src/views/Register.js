@@ -6,7 +6,7 @@ import * as firebase from "firebase";
 
 const personIcon = require("../images/login1_person.png");
 const lockIcon = require("../images/login1_lock.png");
-const emailIcon = require("../images/email-icon.png");
+const emailIcon = require("../images/signup_email.png");
 
 export default class Register extends Component {
 
@@ -41,6 +41,8 @@ export default class Register extends Component {
             try {
                 await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
 
+                const {navigate} = this.props.navigation.navigate('Home')
+
             } catch (error) {
 
                 Alert.alert(
@@ -61,7 +63,7 @@ export default class Register extends Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
-                <View style={styles.headerContainer}>
+                <View >
 
                     <View style={styles.headerTitleView}>
                         <Text style={styles.titleViewText}>Sign Up</Text>
@@ -93,10 +95,8 @@ export default class Register extends Component {
                         value={this.state.password}
                         onChangeText={(password) => this.setState({password})}
                         secureTextEntry
+                        hasError={this.state.error}
                     />
-                </View>
-
-                <View style={styles.footerContainer}>
 
                     <TouchableOpacity>
                         <View style={styles.signup}>
@@ -107,7 +107,7 @@ export default class Register extends Component {
                     <TouchableOpacity>
                         <View style={styles.signin}>
                             <Text style={styles.greyFont}>Already have an account?
-                                <Text style={styles.whiteFont} onPress={() => navigate('Login')} > Sign In</Text>
+                                <Text style={styles.whiteFont} onPress={() => navigate('Login')} > Login</Text>
                             </Text>
                         </View>
                     </TouchableOpacity>
