@@ -25,7 +25,7 @@ export default class Register extends Component {
             loading: true
         });
 
-        if (this.state.email == '' && this.state.password == '') {
+        if (this.state.email === '' && this.state.password === '') {
             Alert.alert(
                 'Attention',
                 'Veuillez renseigner tout les champs !',
@@ -38,15 +38,17 @@ export default class Register extends Component {
             });
 
         } else {
+
             try {
                 await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
 
-                firebase.auth().onAuthStateChanged(function(user) {
-                    if (user && this.state.name != '') {
+                firebase.auth().onAuthStateChanged((user, that = this) => {
+
+                    if (user && that.state.name !== '') {
                         user.updateProfile({
                             displayName: this.state.name
-                        }).then(function() {
-                            console.log("ok pour add name " + this.state.name)
+                        }).then(function(that) {
+                            console.log("ok pour add name " + that.state.name)
                         }).catch(function(error) {
                             console.log(error)
                         });

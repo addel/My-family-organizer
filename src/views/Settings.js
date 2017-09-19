@@ -23,7 +23,7 @@ export default class Settings extends Component {
         try {
             await firebase.auth().signOut();
 
-            const {navigate} = this.props.navigation.navigate('Login')
+            // const {navigate} = this.props.navigation.navigate('Login')
 
         } catch (error) {
             console.log(error);
