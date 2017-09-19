@@ -41,6 +41,18 @@ export default class Register extends Component {
             try {
                 await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
 
+                firebase.auth().onAuthStateChanged(function(user) {
+                    if (user && this.state.name != '') {
+                        user.updateProfile({
+                            displayName: this.state.name
+                        }).then(function() {
+                            console.log("ok pour add name " + this.state.name)
+                        }).catch(function(error) {
+                            console.log(error)
+                        });
+                    }
+                });
+
                 const {navigate} = this.props.navigation.navigate('Home')
 
             } catch (error) {

@@ -6,7 +6,7 @@ export default StyleSheet.create({
         backgroundColor: "#fc9d00"
     },
     login_main_image_view: {
-        marginTop: 60,
+        marginTop: 0,
         marginLeft:40,
         marginRight:40,
         marginBottom: 20,

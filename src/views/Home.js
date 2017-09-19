@@ -6,7 +6,7 @@ import * as firebase from "firebase";
 
 export default class Home extends Component {
 
-    componentWillMount() {
+    async componentWillMount() {
 
         firebase.auth().onAuthStateChanged((user) => {
             if(!user){
