@@ -4,7 +4,7 @@ import {StackNavigator, TabNavigator} from 'react-navigation';
 import Home from '../views/Home';
 import Login from '../views/Login'
 import Register from '../views/Register'
-import Calendar from '../views/Calendar'
+import MyCalendar from '../views/MyCalendar'
 import Settings from '../views/Settings'
 import {Image} from "react-native";
 
@@ -13,8 +13,8 @@ const homeIcon = require("../images/tabBarHome.png");
 const settingsIcon = require("../images/tabBarSettings.png");
 
 export const TabBarBottomNavigator = TabNavigator({
-    Calendar:{
-        screen: Calendar,
+    MyCalendar:{
+        screen: MyCalendar,
         navigationOptions: {
             tabBarIcon: <Image source={calIcon}/>
         }
