@@ -1,16 +1,11 @@
 import * as firebase from "firebase";
 
-class Database {
+export const setUserName =  (userId, username) => {
 
-    static setUserName(userId, username) {
+    let userPath = "/user/" + userId + "/details";
 
-        let userPath = "/user/" + userId + "/details";
+    return firebase.database().ref(userPath).set({
+        username: username
+    })
 
-        return firebase.database().ref(userPath).set({
-            username: username
-        })
-
-    }
-}
-
-module.exports = Database;
+};

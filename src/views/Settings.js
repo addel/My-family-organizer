@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {View, Text, Image, TouchableOpacity} from 'react-native'
 import styles from '../styles/Settings'
 import * as firebase from "firebase";
-import * as Database from "../models/Database";
+import {setUserName} from "../models/Database";
 
 
 const connectIcon = require("../images/connectSetting.png");
@@ -23,24 +23,16 @@ export default class Settings extends Component {
         try {
             await firebase.auth().signOut();
 
-            // const {navigate} = this.props.navigation.navigate('Login')
-
         } catch (error) {
             console.log(error);
         }
 
     }
 
-    async testFirebase() {
-        try {
+    testFirebase() {
+        let user =  firebase.auth().currentUser;
+        setUserName(user.uid, user.displayName);
 
-            let user = await firebase.auth().currentUser;
-
-            Database.setUserName(user.uid, user.displayName);
-
-        } catch (error) {
-            console.log(error);
-        }
     }
 
     render() {
@@ -75,7 +67,6 @@ export default class Settings extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
-
             </View>
         );
     }
