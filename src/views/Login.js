@@ -3,8 +3,7 @@ import {Text, View, TouchableOpacity, Alert} from 'react-native'
 import {LabelTextField} from '../components/LabelTextFiel'
 import styles from '../styles/Login'
 import * as firebase from "firebase";
-import { signInUser, clearState } from '../redux/actions/authentification';
-import { connect } from 'react-redux';
+
 
 const lockIcon = require("../images/login1_lock.png");
 const personIcon = require("../images/login1_person.png");
@@ -22,7 +21,7 @@ export default class Login extends React.Component{
     }
 
     componentWillMount() {
-        this.props.clearState();
+
     }
 
     async resetPassword(){
@@ -130,7 +129,7 @@ export default class Login extends React.Component{
 
                     <TouchableOpacity activeOpacity={.5}>
                         <View style={[styles.button, styles.login]}>
-                            <Text style={styles.buttonText} onPress={handleSubmit(this.handleFormSubmitWithRedux)}>Login</Text>
+                            <Text style={styles.buttonText} onPress={() => handleSubmit(this.handleFormSubmitWithRedux)} >Login</Text>
                          </View>
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={.5}>
@@ -143,15 +142,6 @@ export default class Login extends React.Component{
         )
     }
 }
-
-const mapStateToProps = ({ auth }) => {
-    const { error, loading, user } = auth;
-
-    return { authError: error, loading, user };
-};
-
-export default connect(mapStateToProps, { signInUser, clearState })(Signin);
-
 
 
 

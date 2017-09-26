@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import {Text, View, TouchableOpacity, Alert} from 'react-native'
 import {LabelTextField} from '../components/LabelTextFiel'
 import styles from '../styles/Register'
-import { signInUser, clearState } from '../redux/actions/authentification';
-import { connect } from 'react-redux';
+
 
 const personIcon = require("../images/login1_person.png");
 const lockIcon = require("../images/login1_lock.png");
@@ -145,10 +144,3 @@ export default class Register extends Component {
     }
 }
 
-const mapStateToProps = ({ auth }) => {
-    const { error, loading, user } = auth;
-
-    return { authError: error, loading, user };
-};
-
-export default connect(mapStateToProps, { signUpUser, clearState })(Signup);
