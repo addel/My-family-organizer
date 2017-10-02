@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Text, View, TouchableOpacity, Alert} from 'react-native'
 import {LabelTextField} from '../components/LabelTextFiel'
 import styles from '../styles/Register'
-
+import * as firebase from "firebase";
 
 const personIcon = require("../images/login1_person.png");
 const lockIcon = require("../images/login1_lock.png");
@@ -15,23 +15,11 @@ export default class Register extends Component {
 
         this.state = { email: '', password: '', name: '', error: false, loading: false };
 
-        /*this.handleSubmit = this.handleSubmit.bind(this);*/
-        this.handleFormSubmitWithRedux = this.handleFormSubmitWithRedux.bind(this);
-
-    }
-
-    componentWillMount() {
-        this.props.clearState();
-    }
-
-    handleFormSubmitWithRedux(props) {
-        const { email, password, firstname, lastname } = props;
-
-        this.props.signUpUser({ email, password, firstname, lastname });
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
-    /*async handleSubmit() {
+    async handleSubmit() {
 
         this.setState({
             loading: true
@@ -83,11 +71,10 @@ export default class Register extends Component {
                 });
             }
         }
-    };*/
+    };
 
     render() {
         const { navigate } = this.props.navigation;
-        const { handleSubmit } = this.props;
         return (
             <View style={styles.container}>
                 <View >
@@ -127,7 +114,7 @@ export default class Register extends Component {
 
                     <TouchableOpacity>
                         <View style={styles.signup}>
-                            <Text style={styles.whiteFont} onPress={handleSubmit(this.handleFormSubmit)}>Register</Text>
+                            <Text style={styles.whiteFont} onPress={() => this.handleSubmit() }>Register</Text>
                         </View>
                     </TouchableOpacity>
 
@@ -143,4 +130,3 @@ export default class Register extends Component {
         );
     }
 }
-
