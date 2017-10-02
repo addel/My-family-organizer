@@ -3,12 +3,14 @@ import {Text, View, TouchableOpacity, Alert} from 'react-native'
 import {LabelTextField} from '../components/LabelTextFiel'
 import styles from '../styles/Register'
 import * as firebase from "firebase";
+import {connect} from 'react-redux';
+import * as actions from "../actions/users";
 
 const personIcon = require("../images/login1_person.png");
 const lockIcon = require("../images/login1_lock.png");
 const emailIcon = require("../images/signup_email.png");
 
-export default class Register extends Component {
+class Register extends Component {
 
     constructor(props) {
         super(props);
@@ -17,6 +19,7 @@ export default class Register extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
 
 
     async handleSubmit() {
@@ -130,3 +133,15 @@ export default class Register extends Component {
         );
     }
 }
+
+const mapStateToProps = store => ({
+    username: store.user.name,
+});
+const mapDispatchToProps = dispatch => ({
+    register: () => dispatch(actions.registerSuccess())
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Register)

@@ -1,6 +1,8 @@
 import React from 'react';
 import Firebase from './src/utlis/Firebase'
 import {RootStackNavigator} from "./src/utlis/Router";
+import { Provider } from 'react-redux'
+import store from "./src/store";
 
 export default class App extends React.Component {
 
@@ -11,7 +13,10 @@ export default class App extends React.Component {
   render() {
       const { navigation } = this.props;
         return (
-            <RootStackNavigator/>
+            <Provider store={store}>
+              <RootStackNavigator/>
+            </Provider>
+
         )
   }
 }

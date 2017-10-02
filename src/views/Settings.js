@@ -5,14 +5,13 @@ import * as firebase from "firebase";
 import {setUserName} from "../models/Database";
 
 
-const connectIcon = require("../images/connectSetting.png");
-const exitIcon = require("../images/exitSetting.png");
+const connectIcon = require("../images/connectSetting.png"),
+      exitIcon = require("../images/exitSetting.png");
 
 export default class Settings extends Component {
 
     constructor(props) {
         super(props);
-
 
         this.logout = this.logout.bind(this);
         this.testFirebase = this.testFirebase.bind(this);
@@ -60,7 +59,6 @@ export default class Settings extends Component {
                             <Text style={styles.buttonText} onPress={() => this.logout() }>Leave my home</Text>
                         </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity activeOpacity={.5}>
                         <View style={{marginTop: 10}}>
                             <Text onPress={() => this.testFirebase() }>Test Firebase</Text>
