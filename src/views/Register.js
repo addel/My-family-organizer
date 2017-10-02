@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import {Text, View, TouchableOpacity, Alert} from 'react-native'
 import {LabelTextField} from '../components/LabelTextFiel'
 import styles from '../styles/Register'
-import * as firebase from "firebase";
+
 import {connect} from 'react-redux';
 import * as actions from "../actions/users";
+
 
 const personIcon = require("../images/login1_person.png");
 const lockIcon = require("../images/login1_lock.png");
@@ -22,7 +23,7 @@ class Register extends Component {
 
 
 
-    async handleSubmit() {
+    handleSubmit() {
 
         this.setState({
             loading: true
@@ -43,22 +44,8 @@ class Register extends Component {
         } else {
 
             try {
-                await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
 
-                firebase.auth().onAuthStateChanged((user, that = this) => {
-
-                    if (user && that.state.name !== '') {
-                        user.updateProfile({
-                            displayName: this.state.name
-                        }).then(function(that) {
-                            console.log("ok pour add name " + that.state.name)
-                        }).catch(function(error) {
-                            console.log(error)
-                        });
-                    }
-                });
-
-                const {navigate} = this.props.navigation.navigate('Home')
+                this.props.request(this.state.email, this.state.password);
 
             } catch (error) {
 
@@ -134,14 +121,14 @@ class Register extends Component {
     }
 }
 
-const mapStateToProps = store => ({
+const mapStoreToProps = store => ({
     username: store.user.name,
 });
 const mapDispatchToProps = dispatch => ({
-    register: () => dispatch(actions.registerSuccess())
+    request: (email, password) => dispatch(actions.registerRequest(email, password))
 });
 
 export default connect(
-    mapStateToProps,
+    mapStoreToProps,
     mapDispatchToProps
 )(Register)
