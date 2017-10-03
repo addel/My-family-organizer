@@ -121,9 +121,16 @@ class Register extends Component {
     }
 }
 
+// ici on a ce qu'on appel des containers
+// ça fait le lien entre le stoere et les props du component.
+// ça définit des méthode qui dispatch des actions poiur update le state.
+
+
 const mapStoreToProps = store => ({
     username: store.user.name,
 });
+
+
 const mapDispatchToProps = dispatch => ({
     request: (email, password) => dispatch(actions.registerRequest(email, password))
 });

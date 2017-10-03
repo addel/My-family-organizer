@@ -7,10 +7,6 @@ const reducers = combineReducers({
     user: userReducer
 });
 
-const sagas = function* () {
-    yield [].concat(authenSaga)
-}
-
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
