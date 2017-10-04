@@ -9,19 +9,19 @@ import Immutable from 'seamless-immutable'
 
 const INITIAL_STATE = Immutable({
     user: {},
-    error: ''
+    error: {}
 });
 
-const registerSucessArgument = (state) => {
-    return Object.assign({}, state)
+const registerFailureReducer = (state, {error}) => {
+    return Object.assign({}, state, {error: error})
 };
 
-const registerFailureReducer = (state, {error}) => {
-    return Object.assign({}, state, {error: error.message})
+const registerSucessReducer = (state, {uid}) => {
+    return Object.assign({}, state, {user: uid})
 };
 
 
 export const reducer = createReducer(INITIAL_STATE, {
-    [types.REGISTER_SUCCESS]: registerSucessArgument,
-    [types.REGISTER_FAILURE]: registerFailureReducer
+    [types.REGISTER_FAILURE]: registerFailureReducer,
+    [types.REGISTER_SUCCESS]: registerSucessReducer
 });

@@ -19,8 +19,31 @@ class Register extends Component {
         this.state = { email: '', password: '', name: '', error: false, loading: false };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
+
     }
 
+    componentWillReceiveProps () {
+
+        if (this.props.error.message != undefined){
+            Alert.alert(
+                'Attention',
+                this.props.error.message,
+                [{text: 'OK'},],
+                { cancelable: true }
+            );
+
+            this.setState({
+                error: true
+            });
+        }
+
+        if(this.props.uid == 'redirection'){
+            const {navigate} = this.props.navigation.navigate('Home')
+        }else if(this.props.uid){
+            this.props.setNameFirebase(this.state.name);
+        }
+    }
 
 
     handleSubmit() {
@@ -29,7 +52,7 @@ class Register extends Component {
             loading: true
         });
 
-        if (this.state.email === '' && this.state.password === '') {
+        if (this.state.email === '' && this.state.password === '' && this.state.name === '') {
             Alert.alert(
                 'Attention',
                 'Veuillez renseigner tout les champs !',
@@ -37,29 +60,8 @@ class Register extends Component {
                 { cancelable: true }
             );
 
-            this.setState({
-                error: true
-            });
-
         } else {
-
-            try {
-
-                this.props.request(this.state.email, this.state.password);
-
-            } catch (error) {
-
-                Alert.alert(
-                    'Attention',
-                    error.toString(),
-                    [{text: 'OK'},],
-                    { cancelable: true }
-                );
-
-                this.setState({
-                    error: true
-                });
-            }
+            this.props.request(this.state.email, this.state.password);
         }
     };
 
@@ -102,19 +104,21 @@ class Register extends Component {
                         hasError={this.state.error}
                     />
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.handleSubmit() }>
                         <View style={styles.signup}>
-                            <Text style={styles.whiteFont} onPress={() => this.handleSubmit() }>Register</Text>
+                            <Text style={styles.whiteFont}>Register</Text>
                         </View>
                     </TouchableOpacity>
 
                     <TouchableOpacity>
-                        <View style={styles.signin}>
+                        <View style={styles.signin} onPress={() => navigate('Login')} >
                             <Text style={styles.greyFont}>Already have an account?
-                                <Text style={styles.whiteFont} onPress={() => navigate('Login')} > Login</Text>
+                                <Text style={styles.whiteFont}> Login</Text>
                             </Text>
                         </View>
+                        <Text></Text>
                     </TouchableOpacity>
+
                 </View>
             </View>
         );
@@ -127,12 +131,14 @@ class Register extends Component {
 
 
 const mapStoreToProps = store => ({
-    username: store.user.name,
+    uid: store.user.user,
+    error: store.user.error
 });
 
 
 const mapDispatchToProps = dispatch => ({
-    request: (email, password) => dispatch(actions.registerRequest(email, password))
+    request: ( email, password) => dispatch(actions.registerRequest( email, password)),
+    setNameFirebase: (name) => dispatch(actions.registerNameRequest( name)),
 });
 
 export default connect(

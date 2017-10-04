@@ -12,8 +12,15 @@ export const registerRequest = (email, password) => ({
     password: password
 });
 
-export const registerSuccess = () => ({
+export const registerNameRequest = (name) => ({
+    type: types.REGISTER_NAME_REQUEST,
+    name: name
+});
+
+
+export const registerSuccess = (uid) => ({
     type: types.REGISTER_SUCCESS,
+    uid: uid
 });
 
 export const registerFailure = (error) => ({
