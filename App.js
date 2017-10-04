@@ -1,21 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Firebase from './src/utlis/Firebase'
+import {RootStackNavigator} from "./src/utlis/Router";
+import { Provider } from 'react-redux'
+import store from "./src/store";
 
 export default class App extends React.Component {
+
+  componentWillMount() {
+    Firebase.initialise();
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Hello fucking world !</Text>
-      </View>
-    );
+      const { navigation } = this.props;
+        return (
+            <Provider store={store}>
+              <RootStackNavigator/>
+            </Provider>
+
+        )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
